@@ -21,11 +21,20 @@ const port = 3000;
 
 app.get('/', function(req, res){
   const todos =todo.getTodo();
-res.send(todos);
+res.json(todos);
+})
+
+app.get('/add', function(req, res){
+  const todos =todo.addTodo();
+res.json(todos);
 })
 //res.send(JSON.stringify(todos));
 
-
+app.get('/delete', function(req, res){
+  console.log(req.query.id, "id");
+  const todos =todo.deleteTodo(req.query.id);
+  res.json(todos);
+})
 app.listen(port, function() {
   console.log(`Example app listening on port ${port}`)
 })

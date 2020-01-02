@@ -7,7 +7,7 @@ function addTodo(todo){
     let  todos = [
         {id:0,name:"todo1", description:"todo1 desc"},
         {id:1,name:"todo2", description:"todo2 desc"},
-        {id:2,name:"todo1", description:"todo1 desc"},
+        {id:2,name:"todo3", description:"todo3 desc"},
     ]
     //return todos;
 

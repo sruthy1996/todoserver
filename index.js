@@ -30,21 +30,40 @@ app.get('/', function(req, res){
 res.json(todos);
 })
 
-app.get('/add', function(req, res){
+
+/*app.get('/add', function(req, res){
   const todos =todo.addTodo();
 res.json(todos);
-})
+})*/
 //res.send(JSON.stringify(todos));
 
-app.get('/delete', function(req, res){
-  console.log(req.query.id, "id");
+/*app.get('/delete', function(req, res){
+//app.get('/delete/:id', function(req, res){
+  console.log(req.query.id, "id"); //query parameter (localhost/3000/?id=1)
+  //const id=req.param.id; //url parameter (localhost/3000/1)
   const todos =todo.deleteTodo(req.query.id);
+  res.json(todos);
+})*/
+
+app.delete('/delete/:id', function(req, res){
+  const id=req.params.id;
+  const todos =todo.deleteTodo(id);
   res.json(todos);
 })
 
 app.post('/create', function(req,res){
   //console.log(req.body);
-  res.json(req.body);
+  const todos=todo.addTodo(req.body)
+  res.json(todos);
+})
+
+/*app.put('/edit/:id', function(req,res){
+  res.json({message:"edited successfully"});
+})*/
+
+app.put('/edit/:id', function(req,res){
+  const todos = todo.editTodo(req.params.id, req.body.name, req.body.description);
+  res.json(todos);
 })
 
 

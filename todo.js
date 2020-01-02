@@ -5,14 +5,24 @@ function addTodo(todo){
 //function addTodo(todo){
    // const todos = [
     let  todos = [
-        {id:1,name:"todo1", description:"todo1 desc"},
-        {id:2,name:"todo2", description:"todo2 desc"},
+        {id:0,name:"todo1", description:"todo1 desc"},
+        {id:1,name:"todo2", description:"todo2 desc"},
+        {id:2,name:"todo1", description:"todo1 desc"},
     ]
     //return todos;
 
 
 function addTodo(){
     todos.push({name:"todo1", description:"todo1 desc"});
+    return todos;
+}
+
+function editTodo(id, name, description){
+    let todo = todos.find(function(todo){
+        return todo.id==id;
+    });
+    todo.name = name;
+    todo.description = description;
     return todos;
 }
 
@@ -40,3 +50,4 @@ exports.addTodo=addTodo;
 exports.getTodo=getTodo;
 exports.deleteTodo=deleteTodo;
 exports.name=name;
+exports.editTodo = editTodo;

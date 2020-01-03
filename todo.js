@@ -1,9 +1,9 @@
-function addTodo(todo){
-    console.log(todo);
-}
-
+/*
 //function addTodo(todo){
-   // const todos = [
+   // const todos = [*/
+
+    const db = require('./db');
+
     let  todos = [
         {id:0,name:"todo1", description:"todo1 desc"},
         {id:1,name:"todo2", description:"todo2 desc"},
@@ -12,9 +12,18 @@ function addTodo(todo){
     //return todos;
 
 
-function addTodo(){
-    todos.push({name:"todo1", description:"todo1 desc"});
-    return todos;
+function addTodo(todo){
+    //console.log(todo);
+    //return;
+   //todos.push({name:"todo4", description:"todo4 desc"});
+    const newTodo = new db.Todo(todo);
+       //name:"todo4", description:"todo4 desc"
+ 
+    return newTodo.save();
+    /*.then(data=>{
+        console.log(data);
+    })
+    return todos;*/
 }
 
 function editTodo(id, name, description){
@@ -27,7 +36,12 @@ function editTodo(id, name, description){
 }
 
 function getTodo(){
-    return todos;
+    return db.Todo.find({});
+     /*.then(data=>{
+         console.log(data);
+
+     })
+    return todos;*/
 }
 
 function deleteTodo(id){

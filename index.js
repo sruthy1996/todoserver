@@ -2,12 +2,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const todo=require('./todo')
-todo.addTodo("todo");
+
+
+
+
 
 const app = express();
 app.use(bodyParser.json());
 
-const port = 3000;
+const port = 3001;
+
+app.get('/', function(req, res){
+    todo.getTodo()
+    .then(todos=>{
+        res.json(todos);
+    })
+})
 
 /*app.get('/', function(req, res){
     console.log(req.query)
@@ -25,10 +35,10 @@ const port = 3000;
     {name:"todo2", description:"todo2 desc"},
 ]*/
 
-app.get('/', function(req, res){
+/*app.get('/', function(req, res){
   const todos =todo.getTodo();
 res.json(todos);
-})
+})*/
 
 
 /*app.get('/add', function(req, res){
@@ -53,8 +63,12 @@ app.delete('/delete/:id', function(req, res){
 
 app.post('/create', function(req,res){
   //console.log(req.body);
-  const todos=todo.addTodo(req.body)
-  res.json(todos);
+  //const todos=todo.addTodo(req.body)
+  todo.addTodo(req.body)
+  .then(data=>{
+    res.json(data);
+  })
+  
 })
 
 /*app.put('/edit/:id', function(req,res){

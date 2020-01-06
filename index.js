@@ -57,8 +57,11 @@ res.json(todos);
 
 app.delete('/delete/:id', function(req, res){
   const id=req.params.id;
-  const todos =todo.deleteTodo(id);
-  res.json(todos);
+  //const todos =todo.deleteTodo(id);
+  todo.deleteTodo(id).then(data=>{
+    res.json(data);
+  })
+ 
 })
 
 app.post('/create', function(req,res){
@@ -76,8 +79,12 @@ app.post('/create', function(req,res){
 })*/
 
 app.put('/edit/:id', function(req,res){
-  const todos = todo.editTodo(req.params.id, req.body.name, req.body.description);
-  res.json(todos);
+  //const todos = todo.editTodo(req.params.id, req.body.name, req.body.description);
+  todo.editTodo(req.params.id, req.body.name, req.body.description)
+  .then(data=>{
+    res.json(data);
+  });
+ 
 })
 
 

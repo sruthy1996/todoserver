@@ -10,7 +10,7 @@ const todo=require('./todo')
 const app = express();
 app.use(bodyParser.json());
 
-const port = 3001;
+const port = 3002;
 
 app.get('/', function(req, res){
     todo.getTodo()

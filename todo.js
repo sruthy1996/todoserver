@@ -4,11 +4,11 @@
 
     const db = require('./db');
 
-    let  todos = [
+    /*let  todos = [
         {id:0,name:"todo1", description:"todo1 desc"},
         {id:1,name:"todo2", description:"todo2 desc"},
         {id:2,name:"todo3", description:"todo3 desc"},
-    ]
+    ]*/
     //return todos;
 
 
@@ -38,12 +38,17 @@ function editTodo(id, name, description){
 }
 
 function getTodo(){
-    return db.Todo.find({});
+   // return db.Todo.find({});
+    return db.Todo.find().sort({name:'asc'});
      /*.then(data=>{
          console.log(data);
 
      })
     return todos;*/
+}
+
+function getTodoById(id){
+    return db.Todo.findById(id);
 }
 
 function deleteTodo(id){
@@ -68,3 +73,4 @@ exports.getTodo=getTodo;
 exports.deleteTodo=deleteTodo;
 exports.name=name;
 exports.editTodo = editTodo;
+exports.getTodoById = getTodoById;

@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 
 const todo=require('./todo')
 
-
-
-
+const cors = require('cors');
 
 const app = express();
+
+
 app.use(bodyParser.json());
+
+app.use(cors());
 
 const port = 3002;
 
@@ -87,7 +89,12 @@ app.put('/edit/:id', function(req,res){
  
 })
 
-
+app.get('/todo/:id', function(req,res){
+  todo.getTodoById(req.params.id)
+  .then(data=>{
+    res.json(data)
+   });
+})
 app.listen(port, function() {
   console.log(`Example app listening on port ${port}`)
 })
